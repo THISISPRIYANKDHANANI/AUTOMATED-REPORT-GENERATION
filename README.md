@@ -1,3 +1,15 @@
+COMPANY: CODTECH IT SOLUTIONS
+
+NAME: Priyank Dhanani
+
+"INTERN ID: CT06DG396
+
+*DOMAIN: PYTHON PROGRAMMING
+
+*DURATION: 6 WEEEKS
+
+"MENTOR*: NEELA SANTOSH KUMAR
+
 # Student Report Card Generator
 
 A web-based application for generating professional student report cards from Excel/CSV data files.
