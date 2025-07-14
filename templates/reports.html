@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Generated Reports - Automated Report Generator{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>
+                    <i class="fas fa-file-pdf me-2 text-primary"></i>
+                    Generated Reports
+                </h2>
+                <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left me-2"></i>
+                    Back to Upload
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% if error %}
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    {{ error }}
+                </div>
+            </div>
+        </div>
+    {% elif reports %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-list me-2"></i>
+                            Report Files ({{ reports|length }} files)
+                        </h5>
+                        <a href="{{ url_for('download_reports', file_id=file_id) }}" class="btn btn-light btn-sm">
+                            <i class="fas fa-download me-2"></i>
+                            Download All as ZIP
+                        </a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col">
+                                            <i class="fas fa-file-pdf me-2"></i>
+                                            Report Name
+                                        </th>
+                                        <th scope="col">
+                                            <i class="fas fa-weight me-2"></i>
+                                            File Size
+                                        </th>
+                                        <th scope="col" class="text-center">
+                                            <i class="fas fa-cog me-2"></i>
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for report in reports %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-file-pdf text-danger me-3"></i>
+                                                <div>
+                                                    <div class="fw-bold">{{ report.filename }}</div>
+                                                    <small class="text-muted">PDF Report Card</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-light text-dark">{{ report.size }}</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group">
+                                                <a href="{{ url_for('download_single_report', file_id=file_id, filename=report.filename) }}" 
+                                                   class="btn btn-sm btn-outline-primary" title="Download">
+                                                    <i class="fas fa-download"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Card -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card border-success">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Generation Complete</h5>
+                        <p class="card-text">
+                            Successfully generated {{ reports|length }} student report cards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-info">
+                    <div class="card-body text-center">
+                        <i class="fas fa-info-circle fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">Next Steps</h5>
+                        <p class="card-text">
+                            Download individual reports or get all reports in a single ZIP file.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="fas fa-file-excel fa-5x text-muted mb-4"></i>
+                    <h3 class="text-muted">No Reports Found</h3>
+                    <p class="text-muted mb-4">
+                        It looks like no reports have been generated yet for this batch.
+                    </p>
+                    <a href="{{ url_for('index') }}" class="btn btn-primary">
+                        <i class="fas fa-upload me-2"></i>
+                        Upload New File
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add any specific JavaScript for the reports page here
+    console.log('Reports page loaded');
+});
+</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+# Student Report Generator Dependencies
+# Author: Priyank
+# Created: December 2024
+
+# Web framework
+flask
+werkzeug
+
+# Data processing
+pandas
+openpyxl
+
+# PDF generation
+reportlab

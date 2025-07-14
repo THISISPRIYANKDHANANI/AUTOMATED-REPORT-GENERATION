@@ -1,0 +1,52 @@
+Student Report Card Generator
+============================
+
+Project Details:
+- Author: Priyank
+- Institution: Priyank Training Academy
+- Created: December 2024
+- Purpose: Automate student report card generation
+
+Description:
+This web application helps teachers and administrators generate professional 
+student report cards from Excel or CSV data files. Instead of creating 
+individual reports manually, users can upload a single file containing 
+all student data and generate PDF report cards for all students at once.
+
+Key Features:
+- Web-based interface for easy use
+- Support for Excel and CSV file formats
+- Batch processing for multiple students
+- Professional PDF report card design
+- Download options for individual or bulk reports
+- Responsive design for all devices
+- Dark and light theme options
+
+Technical Stack:
+- Backend: Python Flask
+- Frontend: HTML, CSS, JavaScript
+- PDF Generation: ReportLab library
+- Data Processing: Pandas library
+- UI Framework: Bootstrap 5
+
+How to Run:
+1. Install dependencies: pip install -r requirements.txt
+2. Run the server: python server.py
+3. Open browser: http://localhost:5000
+
+File Structure:
+- server.py: Main Flask application
+- report_generator.py: PDF generation logic
+- templates/: HTML template files
+- static/: CSS and JavaScript files
+- uploads/: Temporary file storage
+- generated_reports/: Output PDF files
+
+Notes:
+- Maximum file size: 16MB
+- Supported formats: CSV, Excel (.xlsx, .xls)
+- Reports are automatically cleaned up after download
+- All student data is processed securely
+
+Contact:
+For questions or support, contact Priyank Training Academy.
